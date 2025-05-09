@@ -4,12 +4,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>edu.estatuas</groupId>
-  <artifactId>gallery</artifactId>
+  <artifactId>galley</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
   <name>gallery</name>
-  <url>https://github.com/GabrielgsdCIUwU/gallery-grub</url>
+  <url>https://github.com/GabrielgsdCIUwU/galley-grub</url>
 
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
