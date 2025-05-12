@@ -8,7 +8,7 @@ public class Item implements Product {
     
     private String name;
     private Double price;
-    private String extra;
+    private String extra = "";
 
     public Item(String name, double price) {
         this.name = name;
@@ -38,7 +38,7 @@ public class Item implements Product {
 
     @Override
     public Boolean isRegular() {
-        return Boolean.TRUE;
+        return Boolean.valueOf(extra.isBlank());
     }
 
     private String priceWithTwoDecimal() {
