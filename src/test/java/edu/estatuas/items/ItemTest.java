@@ -1,6 +1,8 @@
 package edu.estatuas.items;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -15,7 +17,13 @@ public class ItemTest {
 
     @Test
     public void testIsRegular() {
+        String extra = "cheese";
+        Item itemWithExtra = new Item("Krabby Patty", 1.25, extra);
 
+        assertFalse(itemWithExtra.isRegular());
+
+        Item itemRegular = new Item("Krabby Patty", 1.25);
+        assertTrue(itemRegular.isRegular());
     }
 
     @Test
