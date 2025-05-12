@@ -47,6 +47,10 @@ public class OrderTest {
 
         assertEquals(total, order.getTotal());
 
+        order.updateTotal(5.05);
+        total += 5.05;
+        assertEquals(total, order.getTotal());
+
     }
 
 
