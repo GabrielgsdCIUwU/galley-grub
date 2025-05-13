@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 import edu.estatuas.interfaces.Product;
 
 public class Item implements Product {
-    
+
     private String name;
     private Double price;
     private String extra = "";
@@ -41,27 +41,31 @@ public class Item implements Product {
         return Boolean.valueOf(extra.isBlank());
     }
 
-    private String priceWithTwoDecimal() {
-        DecimalFormat df = new DecimalFormat("#.00");
-        return df.format(price());
+    private String priceWithTwoDecimal(Double price) {
+        DecimalFormat df = new DecimalFormat("0.00");
+        return df.format(price);
     }
 
     @Override
     public String toString() {
-        return name() + "...." + priceWithTwoDecimal() + "$";
+        if (isRegular().booleanValue()) {
+            return name() + "...." + priceWithTwoDecimal(price()) + "$";
+        }
+
+        return name() + " w/ " + extra() + "...." + priceWithTwoDecimal(price()) + "$ + " + priceWithTwoDecimal(RetailPrice.getPrice(extra())) + "$";
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Item item) {
-            return this.name.equals(item.name);
+            return this.name.equals(item.name) && this.extra.equals(item.extra);
         }
         return false;
     }
 
     @Override
     public int hashCode() {
-        return this.name.hashCode();
+        return this.name.hashCode() * 31 + this.extra.hashCode();
     }
 
 }

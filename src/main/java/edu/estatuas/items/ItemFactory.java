@@ -20,12 +20,14 @@ public class ItemFactory {
     }
 
     public static Item getItem(String name, Double price, String extra) {
-        if (itemMap.containsKey(name)) {
-            return itemMap.get(name);
+        String nameKey = name + "w/ " + extra;
+        if (itemMap.containsKey(nameKey)) {
+            return itemMap.get(nameKey);
         }
 
-        Item item = new Item(name, price, extra);
-        itemMap.putIfAbsent(name, item);
+
+        Item item = new Item(nameKey, price, extra);
+        itemMap.putIfAbsent(nameKey, item);
         return item;
     }
 
