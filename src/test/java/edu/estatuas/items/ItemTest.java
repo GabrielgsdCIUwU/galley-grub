@@ -49,5 +49,12 @@ public class ItemTest {
         String expected = "Krabby Patty....1,25$";
 
         assertEquals(expected, item.toString());
+        
+        RetailPrice.initPrices();
+        Item itemExtra = new Item("Krabby Patty", 1.25, "cheese");
+
+        String expectedExtra = "Krabby Patty w/ cheese....1,25$ + 0,25$";
+
+        assertEquals(expectedExtra, itemExtra.toString());
     }
 }
