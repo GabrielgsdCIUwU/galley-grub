@@ -2,9 +2,12 @@ package edu.estatuas.items;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
+import edu.estatuas.order.Order;
 
 public class ItemTest {
     @Test
@@ -56,5 +59,29 @@ public class ItemTest {
         String expectedExtra = "Krabby Patty w/ cheese....1,25$ + 0,25$";
 
         assertEquals(expectedExtra, itemExtra.toString());
+    }
+
+    @Test
+    public void testEquals() {
+        Item item = new Item("Krabby Patty", 1.25);
+
+        assertTrue(item.equals(item));
+
+        Item itemExtra = new Item("Krabby Patty", 1.25, "cheese");
+
+        assertFalse(item.equals(itemExtra));
+
+        assertFalse(item.equals(new Order()));
+    }
+
+    @Test
+    public void testHashCode() {
+        Item item = new Item("Krabby Patty", 1.25);
+
+        assertEquals(item.hashCode(), item.hashCode());
+
+        Item itemExtra = new Item("Krabby Patty", 1.25, "cheese");
+
+        assertNotEquals(item.hashCode(), itemExtra.hashCode());
     }
 }
